@@ -26,7 +26,7 @@ public class AppTotal extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JButton btnProcurarEntrada, btnGerarRanking, btnProcurarSaida;
+	private JButton btnProcurarEntrada, btnGerarRanking, btnProcurarSaida,  btnFechar;
 	private JTextField jtfCaminhoEntrada, jtfCaminhoSaida;
 	private String caminhoEntrada = "", caminhoSaida = "";
 	private JRadioButton rdbtnRankingIndividual, rdbtnRankingGeral;
@@ -49,6 +49,16 @@ public class AppTotal extends JFrame {
 		setBackground(Color.LIGHT_GRAY);
 		setResizable(false);
 		setTitle("Programa Contador de Frequência de Palavras");
+		addComponentListener(new ComponentAdapter() {
+			@Override
+			public void componentResized(ComponentEvent e) {
+				setShape(new RoundRectangle2D.Float(0, 0, getWidth() - 4,
+						getHeight() - 4, 16.0f, 16.0f));
+
+			}
+		});
+		setUndecorated(true);
+
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(null);
@@ -68,6 +78,12 @@ public class AppTotal extends JFrame {
 		btnGerarRanking.setBounds(239, 106, 130, 25);
 		btnGerarRanking.addActionListener(acoes);
 
+		btnFechar = new RoundedCornerButton("Fechar");
+		btnFechar.setFont(new Font("Dialog", Font.BOLD, 10));
+		btnFechar.setBounds(710, 10, 78, 25);
+		btnFechar.addActionListener(acoes);
+		contentPane.add(btnFechar);
+		
 		JPanel panelGerar = new JPanel();
 		panelGerar.setBounds(0, 106, 800, 30);
 		panelGerar.add(btnGerarRanking);
