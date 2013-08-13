@@ -2,8 +2,12 @@ package br.ufms.App;
 
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+import java.awt.geom.RoundRectangle2D;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -65,12 +69,12 @@ public class AppTotal extends JFrame {
 		setContentPane(contentPane);
 
 		btnProcurarEntrada = new RoundedCornerButton("Procurar");
-		btnProcurarEntrada.setBounds(98, 10, 100, 25);
+		btnProcurarEntrada.setBounds(555, 10, 100, 25);
 		btnProcurarEntrada.addActionListener(acoes);
 		contentPane.add(btnProcurarEntrada);
 
 		btnProcurarSaida = new RoundedCornerButton("Procurar");
-		btnProcurarSaida.setBounds(98, 70, 100, 25);
+		btnProcurarSaida.setBounds(480, 70, 100, 25);
 		btnProcurarSaida.addActionListener(acoes);
 		contentPane.add(btnProcurarSaida);
 
@@ -91,14 +95,14 @@ public class AppTotal extends JFrame {
 
 		jtfCaminhoEntrada = new RoundJTextField();
 		jtfCaminhoEntrada.setText("");
-		jtfCaminhoEntrada.setBounds(210, 10, 400, 25);
+		jtfCaminhoEntrada.setBounds(74, 10, 400, 25);
 		contentPane.add(jtfCaminhoEntrada);
 		jtfCaminhoEntrada.setColumns(10);
 
 		jtfCaminhoSaida = new RoundJTextField();
 		jtfCaminhoSaida.setText("");
 		jtfCaminhoSaida.setColumns(10);
-		jtfCaminhoSaida.setBounds(210, 70, 400, 25);
+		jtfCaminhoSaida.setBounds(74, 70, 400, 25);
 		contentPane.add(jtfCaminhoSaida);
 
 		JLabel lblTipoDeTabela = new JLabel("Tipo de Ranking: ");
