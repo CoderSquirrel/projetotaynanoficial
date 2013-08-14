@@ -48,7 +48,7 @@ public class App extends JFrame {
 		painel.setLayout(new BorderLayout(0, 0));
 		acoes = new Exit();
 		painel.add(acoes, BorderLayout.NORTH);
-		opcoes = new Opcoes();
+		opcoes = new Opcoes(this);
 		painel.add(opcoes);
 		addComponentListener(new ComponentAdapter() {
 			@Override

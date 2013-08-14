@@ -2,6 +2,7 @@ package br.ufms.App;
 
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -11,7 +12,10 @@ import javax.swing.JRadioButton;
 import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
 
+import br.ufms.App.Opcoes.Acoes;
 import br.ufms.utils.RoundedCornerButton;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class TipoRanking extends JPanel {
 
@@ -22,8 +26,9 @@ public class TipoRanking extends JPanel {
 	private JRadioButton rdbtnRankingIndividual, rdbtnRankingGeral;
 	private ButtonGroup radioButtons;
 	private JButton jbGerarRanking;
+	private JCheckBox chckbxPrVisualizar;
 	
-	public TipoRanking(ActionListener acoes) {
+	public TipoRanking(Acoes acoes) {
 		setBounds(100, 100, 740, 85);
 		setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"),
 				"Tipo de Ranking", TitledBorder.LEADING, TitledBorder.TOP,
@@ -47,7 +52,8 @@ public class TipoRanking extends JPanel {
 		radioButtons.add(rdbtnRankingGeral);
 		radioButtons.add(rdbtnRankingIndividual);
 
-		JCheckBox chckbxPrVisualizar = new JCheckBox("Pr\u00E9 Visualizar");
+		chckbxPrVisualizar = new JCheckBox("Pr\u00E9 Visualizar");
+		chckbxPrVisualizar.addMouseListener(acoes.mouseAdapter);
 		chckbxPrVisualizar.setBounds(575, 53, 120, 23);
 		add(chckbxPrVisualizar);
 		
@@ -68,4 +74,9 @@ public class TipoRanking extends JPanel {
 		return rdbtnRankingGeral;
 	}
 
+	public JCheckBox getChckbxPrVisualizar() {
+		return chckbxPrVisualizar;
+	}
+
+	
 }
