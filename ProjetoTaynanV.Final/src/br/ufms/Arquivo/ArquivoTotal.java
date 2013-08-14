@@ -10,6 +10,9 @@ import java.util.List;
 import java.util.Scanner;
 
 import javax.swing.JFileChooser;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 import br.ufms.Classes.LinhaRankingGeral;
 import br.ufms.Classes.LinhaRankingIndividual;
@@ -23,6 +26,7 @@ public class ArquivoTotal {
         private List<Palavra> listaPalavras = new ArrayList<Palavra>();
         private List<LinhaRankingGeral> linhasGeral = new ArrayList<LinhaRankingGeral>();
         private int quantidadeDeArquivos = 0;
+    	private List<JScrollPane> scrolls = new ArrayList<JScrollPane>();
 
         // Método usados por ambos os tipos de exportação
 
@@ -355,6 +359,38 @@ public class ArquivoTotal {
                 return exportarTotal.rankingIndividual(caminho, nomeArquivoSaida,
                                 linhas);
         }
+        /**
+    	 * Preenche a List de scrollPanes que sera usada na previsualizacao
+    	 * 
+    	 * @param linhas
+    	 */
+    	public void preencherScrolls(List<LinhaRankingIndividual> linhas){
+    		DefaultTableModel modelo = new DefaultTableModel();
+    		modelo.addColumn("Indice");
+    		modelo.addColumn("Palavra");
+    		modelo.addColumn("Frequência");
+    		modelo.addColumn("Arquivo");
+
+    		JTable tabela = new JTable(modelo);
+    		tabela.getColumnModel().getColumn(0).setPreferredWidth(3);
+    		tabela.getColumnModel().getColumn(1).setPreferredWidth(100);
+    		tabela.getColumnModel().getColumn(2).setPreferredWidth(100);
+    		for (LinhaRankingIndividual linha : linhas) {
+    			modelo.addRow(new Object[] { linha.getI(), linha.getPalavra(),
+    					linha.getQuantidade(), linha.getArqivoDeOrigem() });
+    		}
+
+    		JScrollPane scrollPane = new JScrollPane(tabela);
+    		scrollPane.setSize(700, 380);
+    		String original = linhas.get(1).getArqivoDeOrigem();
+    		String titulo = "";
+    		for (int i = 0; i < 40; i++) {
+    			titulo = titulo +original.charAt(i);
+    			
+    		}
+    		scrollPane.setName(titulo);
+    		scrolls.add(scrollPane);
+    	}
 
         // Gets
         public List<Palavra> getListaPalavras() {
@@ -364,4 +400,10 @@ public class ArquivoTotal {
         public int getQuantidadeDeArquivos() {
                 return quantidadeDeArquivos;
         }
-}
+        public List<JScrollPane> getScrolls() {
+    		return scrolls;
+    	}
+    	public List<LinhaRankingGeral> getLinhasGeral() {
+    		return linhasGeral;
+    	}
+    }
