@@ -75,9 +75,11 @@ public class Opcoes extends JPanel {
 				if (ranking.getChckbxPrVisualizar().isSelected()) {
 					app.setLocation(app.getWidth() / 3, 0);
 					app.setSize(1024, 768);
+					app.getResultado().setVisible(true);
 				} else {
 					app.setLocation(app.getWidth() / 3, app.getHeight() / 3);
 					app.setSize(700, 226);
+					app.getResultado().setVisible(false);
 				}
 			}
 		};

@@ -20,6 +20,7 @@ public class App extends JFrame {
 	private JPanel painel;
 	private JPanel acoes;
 	private JPanel opcoes;
+	private JPanel resultado;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -50,6 +51,10 @@ public class App extends JFrame {
 		painel.add(acoes, BorderLayout.NORTH);
 		opcoes = new Opcoes(this);
 		painel.add(opcoes);
+		
+		resultado = new Resutados();
+		resultado.setVisible(false);
+		painel.add(resultado, BorderLayout.SOUTH);
 		addComponentListener(new ComponentAdapter() {
 			@Override
 			public void componentResized(ComponentEvent e) {
@@ -60,6 +65,11 @@ public class App extends JFrame {
 		});
 		setUndecorated(true);
 	}
+
+	public JPanel getResultado() {
+		return resultado;
+	}
+	
 	
 
 }
