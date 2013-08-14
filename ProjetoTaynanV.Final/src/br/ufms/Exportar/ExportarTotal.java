@@ -31,13 +31,16 @@ public class ExportarTotal {
 
 	// Métodos para exportação de Ranking Geral
 
-/**
- * 
- * @param caminho lugar a ser salvo o arquivo
- * @param nomeArquivoSaida  nome do arquivo a ser exportado
- * @param linhas informações a serem salvas
- * @return status de gravação
- */
+	/**
+	 * 
+	 * @param caminho
+	 *            lugar a ser salvo o arquivo
+	 * @param nomeArquivoSaida
+	 *            nome do arquivo a ser exportado
+	 * @param linhas
+	 *            informações a serem salvas
+	 * @return status de gravação
+	 */
 	public String exportarRankingGeral(String caminho, String nomeArquivoSaida,
 			List<LinhaRankingGeral> linhas) {
 		sheet = workbook.createSheet(nomeArquivoSaida);
@@ -106,15 +109,19 @@ public class ExportarTotal {
 	// Método para exportação de Ranking Individual
 	/**
 	 * 
-	 * @param caminho lugar a ser exportado o arquivo
-	 * @param nomeArquivoSaida nome do aquivo a er exportado
-	 * @param linhas informações a serem gravadas
+	 * @param caminho
+	 *            lugar a ser exportado o arquivo
+	 * @param nomeArquivoSaida
+	 *            nome do aquivo a er exportado
+	 * @param linhas
+	 *            informações a serem gravadas
 	 * @return status da exportação
 	 */
 	public String rankingIndividual(String caminho, String nomeArquivoSaida,
 			List<LinhaRankingIndividual> linhas) {
 		workbook = new HSSFWorkbook();
 		estilos = preencherEstilos();
+		nomeArquivoSaida = removeCaracteresInvalidos(nomeArquivoSaida);
 
 		HSSFSheet sheetIndividual = workbook.createSheet(nomeArquivoSaida);
 
@@ -180,11 +187,23 @@ public class ExportarTotal {
 		return statusGravacao;
 	}
 
+	private String removeCaracteresInvalidos(String nomeArquivoSaida) {
+		nomeArquivoSaida = nomeArquivoSaida.replace("[", "");
+		nomeArquivoSaida = nomeArquivoSaida.replace("]", "");
+		nomeArquivoSaida = nomeArquivoSaida.replace("_", " ");
+		nomeArquivoSaida = nomeArquivoSaida.replace(".eng", " ");
+		nomeArquivoSaida = nomeArquivoSaida.replace("(EN)", " ");
+		return nomeArquivoSaida;
+	}
+
 	// Métodos para ambos
 	/**
 	 * Metodo que faz a gravação do arquivo
-	 * @param caminho lugar a ser exportado o arquivo
-	 * @param nomeDoArquivo nome ndo arquivo a ser salvo
+	 * 
+	 * @param caminho
+	 *            lugar a ser exportado o arquivo
+	 * @param nomeDoArquivo
+	 *            nome ndo arquivo a ser salvo
 	 */
 	private void exportar(String caminho, String nomeDoArquivo) {
 		try {
@@ -212,6 +231,7 @@ public class ExportarTotal {
 
 	/**
 	 * Cria a lista de estilos
+	 * 
 	 * @return lista de CellStyle
 	 */
 	public List<CellStyle> preencherEstilos() {
@@ -242,7 +262,7 @@ public class ExportarTotal {
 		estilo2.setBorderTop(CellStyle.BORDER_THIN);
 		estilo2.setBorderBottom(CellStyle.BORDER_THIN);
 		temp.add(estilo2);
-		
+
 		return temp;
 	}
 }

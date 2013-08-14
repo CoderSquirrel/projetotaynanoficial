@@ -12,6 +12,8 @@ import javax.swing.border.TitledBorder;
 
 import br.ufms.App.Opcoes.Acoes;
 import br.ufms.utils.RoundedCornerButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TipoRanking extends JPanel {
 
@@ -23,8 +25,9 @@ public class TipoRanking extends JPanel {
 	private ButtonGroup radioButtons;
 	private JButton jbGerarRanking;
 	private JCheckBox chckbxPrVisualizar;
-	public TipoRanking() {
-		setBounds(100, 100, 740, 85);
+	private boolean habilitado;
+	public TipoRanking(Acoes acoes) {
+		setBounds(100, 100, 740, 80);
 		setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"),
 				"Tipo de Ranking", TitledBorder.LEADING, TitledBorder.TOP,
 				null, new Color(0, 0, 0)));
@@ -48,13 +51,27 @@ public class TipoRanking extends JPanel {
 		radioButtons.add(rdbtnRankingIndividual);
 
 		chckbxPrVisualizar = new JCheckBox("Pr\u00E9 Visualizar");
-//		chckbxPrVisualizar.addMouseListener(acoes.mouseAdapter);
+		chckbxPrVisualizar.addMouseListener(acoes.mouseAdapter);
 		chckbxPrVisualizar.setBounds(575, 53, 120, 23);
 		add(chckbxPrVisualizar);
 		
 		jbGerarRanking = new RoundedCornerButton("Gerar Ranking");
+		jbGerarRanking.addActionListener(acoes.actionListener);
 		jbGerarRanking.setBounds(575, 21, 120, 25);
 		add(jbGerarRanking);
+	}
+
+	public void habilitaDasabilita() {
+		if (!habilitado) {
+			rdbtnRankingGeral.setEnabled(false);
+			rdbtnRankingIndividual.setEnabled(false);
+			jbGerarRanking.setEnabled(false);
+		} else {
+			rdbtnRankingGeral.setEnabled(true);
+			rdbtnRankingIndividual.setEnabled(true);
+			jbGerarRanking.setEnabled(true);
+		}
+		this.habilitado = !habilitado;
 	}
 
 	public JButton getJbGerarRanking() {

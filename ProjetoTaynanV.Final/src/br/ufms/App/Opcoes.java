@@ -9,6 +9,8 @@ import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import br.ufms.Arquivo.ArquivoTotal;
+
 public class Opcoes extends JPanel {
 
 	private static final long serialVersionUID = 1L;
@@ -16,10 +18,9 @@ public class Opcoes extends JPanel {
 	private Saida saida;
 	private JPanel entradaSaida;
 	private TipoRanking ranking;
-	private String caminhoEntrada;
-	private String caminhoSaida;
 	private App app;
 	private Acoes acoes;
+	private ArquivoTotal arquivo = new ArquivoTotal();
 
 	public Opcoes(App app) {
 		acoes = new Acoes();
@@ -31,9 +32,28 @@ public class Opcoes extends JPanel {
 		saida = new Saida();
 		entradaSaida.add(saida);
 		add(entradaSaida);
-		ranking = new TipoRanking();
+		ranking = new TipoRanking(acoes);
 		add(ranking);
 
+	}
+
+	/**
+	 * verifica se todos os campos foram preenchidos
+	 * 
+	 * @return verdadeiro se todos foram falso senão
+	 */
+	private boolean isOk() {
+		if (entrada.getCaminhoEntrada().equalsIgnoreCase("")) {
+			return false;
+		}
+		if (saida.getCaminhoSaida().equalsIgnoreCase("")) {
+			return false;
+		}
+		if (!ranking.getRdbtnRankingGeral().isSelected()
+				&& !ranking.getRdbtnRankingIndividual().isSelected()) {
+			return false;
+		}
+		return true;
 	}
 
 	class Acoes {
@@ -42,27 +62,41 @@ public class Opcoes extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 
 				if (e.getSource() == ranking.getJbGerarRanking()) {
-					if (caminhoEntrada.equalsIgnoreCase("")) {
-						// lblAvisoArquivo.setText("Escolha a pasta");
+					if (entrada.getCaminhoEntrada().equalsIgnoreCase("")) {
+						entrada.getLbErro().setVisible(true);
 					} else {
-						// lblAvisoArquivo.setText("");
+						entrada.getLbErro().setVisible(false);
 					}
-					if (caminhoSaida.equalsIgnoreCase("")) {
-						// lblAvisoSalvar.setText("Escolha a pasta");
+					if (saida.getCaminhoSaida().equalsIgnoreCase("")) {
+						saida.getLbErro().setVisible(true);
 					} else {
-						// lblAvisoSalvar.setText("");
-					}
-					if (!ranking.getRdbtnRankingGeral().isSelected()
-							&& !ranking.getRdbtnRankingIndividual()
-									.isSelected()) {
-						// lblAvisoTipoTabela.setText("Escolha o tipo");
-					} else {
-						// lblAvisoTipoTabela.setText("");
+						saida.getLbErro().setVisible(false);
 					}
 					if (ranking.getChckbxPrVisualizar().isSelected()) {
 						JOptionPane.showMessageDialog(app, "teste");
 					}
+					if (isOk()) {
+						if (ranking.getRdbtnRankingGeral().isSelected()) {
+							arquivo = new ArquivoTotal();
+							arquivo.abrirArquivosRankingGeral(entrada
+									.getCaminhoEntrada());
+							entrada.habilitaDasabilita();
+							saida.habilitaDasabilita();
+							arquivo.exportarRankingGeral(saida
+									.getCaminhoSaida());
+							ranking.habilitaDasabilita();
+						} else if (ranking.getRdbtnRankingIndividual()
+								.isSelected()) {
+							arquivo = new ArquivoTotal();
+							arquivo.abrirArquivoRankingIndividual(
+									saida.getCaminhoSaida(),
+									entrada.getCaminhoEntrada());
+							entrada.habilitaDasabilita();
+							saida.habilitaDasabilita();
+							ranking.habilitaDasabilita();
+						}
 
+					}
 				}
 
 			}
@@ -77,7 +111,7 @@ public class Opcoes extends JPanel {
 					app.getResultado().setVisible(true);
 				} else {
 					app.setLocation(app.getWidth() / 3, app.getHeight() / 3);
-					app.setSize(700, 226);
+					app.setSize(700, 300);
 					app.getResultado().setVisible(false);
 				}
 			}

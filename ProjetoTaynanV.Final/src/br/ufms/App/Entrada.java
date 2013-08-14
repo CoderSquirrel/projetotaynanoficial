@@ -25,18 +25,20 @@ public class Entrada extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JButton btnProcurarEntrada;
 	private JTextField jtfCaminhoEntrada;
-	private String caminhoEntrada;
+	private String caminhoEntrada = "";
+	private JLabel lbErro;
+	private boolean habilitado;
 
 	public Entrada() {
 		setBounds(100, 100, 700, 88);
-		setBorder(new TitledBorder(null, "Entrada",
-				TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		setBorder(new TitledBorder(null, "Entrada", TitledBorder.LEADING,
+				TitledBorder.TOP, null, null));
 		setLayout(null);
 
 		btnProcurarEntrada = new RoundedCornerButton("Procurar");
 		btnProcurarEntrada.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				caminhoEntrada = escolherPasta(1);
+				caminhoEntrada = escolherPasta();
 				jtfCaminhoEntrada.setText(caminhoEntrada);
 			}
 		});
@@ -52,23 +54,27 @@ public class Entrada extends JPanel {
 		JLabel lblCaminhoEntrada = new JLabel("Diret\u00F3rio com Legendas:");
 		lblCaminhoEntrada.setBounds(10, 21, 161, 25);
 		add(lblCaminhoEntrada);
-		
-		JLabel lblAlertDiretrioEntrada = new JLabel("Diret\u00F3rio com as Legendas Precisa ser Definido.");
-		lblAlertDiretrioEntrada.setForeground(Color.RED);
-		lblAlertDiretrioEntrada.setIcon(new ImageIcon(System.getProperty("user.dir")+"\\img\\error.png"));
-		lblAlertDiretrioEntrada.setBounds(10, 57, 555, 14);
-		add(lblAlertDiretrioEntrada);
+
+		lbErro = new JLabel(
+				"Diret\u00F3rio com as Legendas Precisa ser Definido.");
+		lbErro.setForeground(Color.RED);
+		lbErro.setIcon(new ImageIcon(
+				"C:\\Users\\Admin\\git\\ProjetoTaynanOficial\\ProjetoTaynanV.Final\\img\\error.png"));
+		lbErro.setBounds(10, 47, 555, 14);
+		lbErro.setVisible(false);
+		add(lbErro);
 	}
 
 	/**
 	 * 
 	 * @param op
 	 *            Entrada um inteiro 1 ou 2. Se op == 1 então o JFileChooser
-	 *            será aberto para abrir um arquivo. Se op == 2 será para salvar
-	 *            o arquivo
+	 *            será aberto para abrir um arquivo. Se op == 2 será para
+	 *            salvar o arquivo
 	 * @return caminhoArquivo que é uma String contendo a pasta selecionada
 	 */
-	public String escolherPasta(int op) {
+	public String escolherPasta() {
+		lbErro.setVisible(false);
 		File arquivo = null;
 		arquivo = JDirectoryChooser.showDialog(this, arquivo,
 				"Selecione o Diretorio",
@@ -78,7 +84,6 @@ public class Entrada extends JPanel {
 		}
 		if (arquivo.exists()) {
 			caminhoEntrada = arquivo.getAbsolutePath();
-			
 
 		}
 		return caminhoEntrada;
@@ -87,6 +92,20 @@ public class Entrada extends JPanel {
 	public String getCaminhoEntrada() {
 		return caminhoEntrada;
 	}
-	
-	
+
+	public JLabel getLbErro() {
+		return lbErro;
+	}
+
+	public void habilitaDasabilita() {
+		if (!habilitado) {
+			jtfCaminhoEntrada.setEnabled(false);
+			btnProcurarEntrada.setEnabled(false);
+		} else {
+			jtfCaminhoEntrada.setEnabled(true);
+			btnProcurarEntrada.setEnabled(true);
+		}
+		this.habilitado = !habilitado;
+	}
+
 }

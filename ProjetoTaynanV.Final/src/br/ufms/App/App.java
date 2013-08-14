@@ -41,7 +41,7 @@ public class App extends JFrame {
 	public App() {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 700, 226);
+		setBounds(100, 100, 700, 300);
 		setBackground(Color.LIGHT_GRAY);
 		setLocationRelativeTo(null);
 		painel = new JPanel();

@@ -16,6 +16,7 @@ import br.ufms.utils.RoundedCornerButton;
 import com.jtechlabs.ui.widget.directorychooser.JDirectoryChooser;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
 public class Saida extends JPanel {
 
@@ -25,11 +26,12 @@ public class Saida extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JButton btnProcurarSaida;
 	private JTextField jtfCaminhoSaida;
-	private String caminhoSaida;
+	private String caminhoSaida = "";
+	private JLabel lbErro;
+	private boolean habilitado;
 
 	public Saida() {
-		setSize(700, 65);
-		setBounds(0, 0, 700, 65);
+		setBounds(100, 100, 700, 88);
 		setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"),
 				"Saida", TitledBorder.LEADING, TitledBorder.TOP, null,
 				new Color(0, 0, 0)));
@@ -38,7 +40,7 @@ public class Saida extends JPanel {
 		btnProcurarSaida = new RoundedCornerButton("Procurar");
 		btnProcurarSaida.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				caminhoSaida = escolherPasta(1);
+				caminhoSaida = escolherPasta();
 				jtfCaminhoSaida.setText(caminhoSaida);
 			}
 		});
@@ -51,13 +53,21 @@ public class Saida extends JPanel {
 		add(jtfCaminhoSaida);
 		jtfCaminhoSaida.setColumns(10);
 
-		JLabel lblCaminhoEntrada = new JLabel("Diret\u00F3rio Saida:");
+		JLabel lblCaminhoEntrada = new JLabel("Diret\u00F3rio Sa\u00EDda:");
 		lblCaminhoEntrada.setBounds(10, 21, 129, 25);
 		add(lblCaminhoEntrada);
+		
+		lbErro = new JLabel("Diret\u00F3rio de Sa\u00EDda Precisa ser Definido.");
+		lbErro.setIcon(new ImageIcon("C:\\Users\\Admin\\git\\ProjetoTaynanOficial\\ProjetoTaynanV.Final\\img\\error.png"));
+		lbErro.setForeground(Color.RED);
+		lbErro.setBounds(10, 47, 555, 14);
+		lbErro.setVisible(false);
+		add(lbErro);
 
 	}
 
-	public String escolherPasta(int op) {
+	public String escolherPasta() {
+		lbErro.setVisible(false);
 		File arquivo = null;
 		arquivo = JDirectoryChooser.showDialog(this, arquivo,
 				"Selecione o Diretorio",
@@ -72,9 +82,23 @@ public class Saida extends JPanel {
 		}
 		return caminhoSaida;
 	}
+	
+	public void habilitaDasabilita() {
+		if (!habilitado) {
+			jtfCaminhoSaida.setEnabled(false);
+			btnProcurarSaida.setEnabled(false);
+		} else {
+			jtfCaminhoSaida.setEnabled(true);
+			btnProcurarSaida.setEnabled(true);
+		}
+		this.habilitado = !habilitado;
+	}
 
 	public String getCaminhoSaida() {
 		return caminhoSaida;
 	}
 	
+	public JLabel getLbErro() {
+		return lbErro;
+	}
 }
