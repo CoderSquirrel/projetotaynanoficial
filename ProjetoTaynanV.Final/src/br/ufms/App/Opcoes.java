@@ -74,7 +74,7 @@ public class Opcoes extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				if (ranking.getChckbxPrVisualizar().isSelected()) {
 					app.setLocation(app.getWidth() / 3, 0);
-					app.setSize(1024, 768);
+					app.setSize(1024, 728);
 					app.getResultado().setVisible(true);
 				} else {
 					app.setLocation(app.getWidth() / 3, app.getHeight() / 3);
