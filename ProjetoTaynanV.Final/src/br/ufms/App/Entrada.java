@@ -14,6 +14,8 @@ import br.ufms.utils.RoundJTextField;
 import br.ufms.utils.RoundedCornerButton;
 
 import com.jtechlabs.ui.widget.directorychooser.JDirectoryChooser;
+import javax.swing.ImageIcon;
+import java.awt.Color;
 
 public class Entrada extends JPanel {
 
@@ -26,7 +28,7 @@ public class Entrada extends JPanel {
 	private String caminhoEntrada;
 
 	public Entrada() {
-		setBounds(100, 100, 700, 65);
+		setBounds(100, 100, 700, 88);
 		setBorder(new TitledBorder(null, "Entrada",
 				TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		setLayout(null);
@@ -50,6 +52,12 @@ public class Entrada extends JPanel {
 		JLabel lblCaminhoEntrada = new JLabel("Diret\u00F3rio com Legendas:");
 		lblCaminhoEntrada.setBounds(10, 21, 161, 25);
 		add(lblCaminhoEntrada);
+		
+		JLabel lblAlertDiretrioEntrada = new JLabel("Diret\u00F3rio com as Legendas Precisa ser Definido.");
+		lblAlertDiretrioEntrada.setForeground(Color.RED);
+		lblAlertDiretrioEntrada.setIcon(new ImageIcon(System.getProperty("user.dir")+"\\img\\error.png"));
+		lblAlertDiretrioEntrada.setBounds(10, 57, 555, 14);
+		add(lblAlertDiretrioEntrada);
 	}
 
 	/**

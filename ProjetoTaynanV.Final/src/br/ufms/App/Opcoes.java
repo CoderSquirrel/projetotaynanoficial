@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 public class Opcoes extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private Entrada entrada;
+	private Entrada entrada = new Entrada();
 	private Saida saida;
 	private JPanel entradaSaida;
 	private TipoRanking ranking;
@@ -27,12 +27,11 @@ public class Opcoes extends JPanel {
 		setLayout(new GridLayout(0, 1, 0, 0));
 		entradaSaida = new JPanel();
 		entradaSaida.setLayout(new GridLayout(0, 1, 0, 0));
-		entrada = new Entrada();
 		entradaSaida.add(entrada);
 		saida = new Saida();
 		entradaSaida.add(saida);
 		add(entradaSaida);
-		ranking = new TipoRanking(acoes);
+		ranking = new TipoRanking();
 		add(ranking);
 
 	}

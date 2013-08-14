@@ -24,7 +24,7 @@ public class Exit extends JPanel {
 				System.exit(0);
 			}
 		});
-		label.setIcon(new ImageIcon(System.getProperty("user.dir")+("\\img\\delete.png")));
+		label.setIcon(new ImageIcon(System.getProperty("user.dir")+("\\img\\sair.png")));
 		add(label, BorderLayout.EAST);
 
 	}
