@@ -44,6 +44,7 @@ public class App extends JFrame {
 		setBounds(100, 100, 700, 300);
 		setBackground(Color.LIGHT_GRAY);
 		setLocationRelativeTo(null);
+		setTitle("Count FreqX");
 		painel = new JPanel();
 		setContentPane(painel);
 		painel.setLayout(new BorderLayout(0, 0));
@@ -55,6 +56,7 @@ public class App extends JFrame {
 		resultado = new Resutado();
 		resultado.setVisible(false);
 		painel.add(resultado, BorderLayout.SOUTH);
+		setTitle("");
 		addComponentListener(new ComponentAdapter() {
 			@Override
 			public void componentResized(ComponentEvent e) {
