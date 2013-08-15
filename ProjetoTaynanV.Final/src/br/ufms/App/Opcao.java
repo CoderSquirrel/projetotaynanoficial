@@ -3,8 +3,6 @@ package br.ufms.App;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.List;
 
 import javax.swing.JPanel;
@@ -93,6 +91,7 @@ public class Opcao extends JPanel {
 							|| saida.getLbErro().isVisible()) {
 						return;
 					}
+
 					ranking.getProgressBar().setVisible(true);
 					Thread th = new Thread(new Runnable() {
 						@Override
@@ -163,32 +162,30 @@ public class Opcao extends JPanel {
 					} catch (InterruptedException e1) {
 					}
 				}
-
-			}
-
-		};
-		MouseAdapter mouseAdapter = new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if (gerouRanking) {
-					ranking.getLbVisualizar().setVisible(false);
-					if (ranking.getChckbxPrVisualizar().isSelected()) {
-						app.setLocation(app.getWidth() / 3, 0);
-						app.setSize(700, 728);
-						app.getResultado().setVisible(true);
-					} else {
-						app.setLocation(app.getWidth() / 3, app.getHeight() / 3);
-						app.setSize(700, 300);
-						app.getResultado().setVisible(false);
-					}
-				} else {
-					if (ranking.getChckbxPrVisualizar().isSelected())
-						ranking.getLbVisualizar().setVisible(true);
-					else
+				if (e.getSource() == ranking.getChckbxPrVisualizar()) {
+					if (gerouRanking) {
 						ranking.getLbVisualizar().setVisible(false);
+						if (ranking.getChckbxPrVisualizar().isSelected()) {
+							app.setLocation(app.getWidth() / 3, 0);
+							app.setSize(700, 728);
+							app.getResultado().setVisible(true);
+						} else {
+							app.setLocation(app.getWidth() / 3,
+									app.getHeight() / 3);
+							app.setSize(700, 300);
+							app.getResultado().setVisible(false);
+						}
+					} else {
+						if (ranking.getChckbxPrVisualizar().isSelected())
+							ranking.getLbVisualizar().setVisible(true);
+						else
+							ranking.getLbVisualizar().setVisible(false);
 
+					}
 				}
+
 			}
+
 		};
 	}
 }

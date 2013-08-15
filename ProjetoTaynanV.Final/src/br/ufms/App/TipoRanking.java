@@ -8,13 +8,13 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JProgressBar;
 import javax.swing.JRadioButton;
 import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
 
 import br.ufms.App.Opcao.Acoes;
 import br.ufms.utils.RoundedCornerButton;
-import javax.swing.JProgressBar;
 
 public class TipoRanking extends JPanel {
 
@@ -54,12 +54,11 @@ public class TipoRanking extends JPanel {
 		radioButtons.add(rdbtnRankingIndividual);
 
 		chckbxPrVisualizar = new JCheckBox("Pr\u00E9 Visualizar");
-		chckbxPrVisualizar.addMouseListener(acoes.mouseAdapter);
+		chckbxPrVisualizar.addActionListener(acoes.actionListener);
 		chckbxPrVisualizar.setBounds(575, 53, 120, 23);
 		add(chckbxPrVisualizar);
 		
 		jbGerarRanking = new RoundedCornerButton("Gerar Ranking");
-		jbGerarRanking.addActionListener(acoes.actionListener);
 		jbGerarRanking.setBounds(575, 21, 120, 25);
 		add(jbGerarRanking);
 		
