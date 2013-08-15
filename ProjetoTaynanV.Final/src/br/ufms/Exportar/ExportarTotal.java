@@ -54,7 +54,7 @@ public class ExportarTotal {
 
 		Cell classificacao = cabecalho.createCell(0);
 		classificacao.setCellStyle(estilos.get(2));
-		classificacao.setCellValue("ClassificaÃ§Ã£o");
+		classificacao.setCellValue("Classificação");
 
 		Cell palavra = cabecalho.createCell(1);
 		palavra.setCellStyle(estilos.get(2));
@@ -62,11 +62,11 @@ public class ExportarTotal {
 
 		Cell freqPrim = cabecalho.createCell(2);
 		freqPrim.setCellStyle(estilos.get(2));
-		freqPrim.setCellValue("FrequÃªncia Primaria");
+		freqPrim.setCellValue("Frequência Primaria");
 
 		Cell freqSec = cabecalho.createCell(3);
 		freqSec.setCellStyle(estilos.get(2));
-		freqSec.setCellValue("FrequÃªncia Secundaria");
+		freqSec.setCellValue("Frequência Secundaria");
 
 		sheet.autoSizeColumn(0);
 		sheet.autoSizeColumn(1);
@@ -99,7 +99,7 @@ public class ExportarTotal {
 		Row rodape = sheet.createRow(sheet.getLastRowNum() + 1);
 		sheet.addMergedRegion(new CellRangeAddress(numRow, numRow + 1, 0, 3));
 		Cell coluna = rodape.createCell(0);
-		coluna.setCellValue("Arquivo Gerado por Programa Contador de FrequÃªncia de Palavras");
+		coluna.setCellValue("Arquivo Gerado por Programa Contador de Frequência de Palavras");
 		coluna.setCellStyle(estilos.get(1));
 
 		exportar(caminho, nomeArquivoSaida);
@@ -135,7 +135,7 @@ public class ExportarTotal {
 
 		Cell classificacao = cabecalho.createCell(0);
 		classificacao.setCellStyle(estilos.get(2));
-		classificacao.setCellValue("ClassificaÃ§Ã£o ");
+		classificacao.setCellValue("Classificação ");
 
 		Cell palavra = cabecalho.createCell(1);
 		palavra.setCellStyle(estilos.get(2));
@@ -143,7 +143,7 @@ public class ExportarTotal {
 
 		Cell freqPrim = cabecalho.createCell(2);
 		freqPrim.setCellStyle(estilos.get(2));
-		freqPrim.setCellValue("FrequÃªncia ");
+		freqPrim.setCellValue("Frequência ");
 
 		Cell freqSec = cabecalho.createCell(3);
 		freqSec.setCellStyle(estilos.get(2));
@@ -180,7 +180,7 @@ public class ExportarTotal {
 		sheetIndividual.addMergedRegion(new CellRangeAddress(numRow,
 				numRow + 1, 0, 3));
 		Cell coluna = rodape.createCell(0);
-		coluna.setCellValue("Arquivo Gerado por Programa Contador de FrequÃªncia de Palavras");
+		coluna.setCellValue("Arquivo Gerado por Programa Contador de Frequência de Palavras");
 		coluna.setCellStyle(estilos.get(1));
 
 		exportar(caminho, nomeArquivoSaida);
@@ -216,7 +216,7 @@ public class ExportarTotal {
 				statusGravacao = "Ranking exportado.";
 
 			} else {
-				statusGravacao = "Problema na geraÃ§Ã£o do arquivo.";
+				statusGravacao = "Problema na geração do arquivo.";
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
