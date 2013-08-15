@@ -10,10 +10,8 @@ import javax.swing.JRadioButton;
 import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
 
-import br.ufms.App.Opcoes.Acoes;
+import br.ufms.App.Opcao.Acoes;
 import br.ufms.utils.RoundedCornerButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class TipoRanking extends JPanel {
 

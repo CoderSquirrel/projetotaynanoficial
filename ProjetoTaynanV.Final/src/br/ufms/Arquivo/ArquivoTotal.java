@@ -214,10 +214,11 @@ public class ArquivoTotal {
          * @return String resultado do metodo exportarRankingGeral do arquivo
          *         Exportar
          */
-        public String exportarRankingGeral(String caminho) {
+        public List<LinhaRankingGeral> exportarRankingGeral(String caminho) {
                 linhasGeral = preencherListaGeral();
-                return new ExportarTotal().exportarRankingGeral(caminho,
+                new ExportarTotal().exportarRankingGeral(caminho,
                                 "RankingGeral", linhasGeral);
+                return linhasGeral;
         }
 
         // Métodos para exportar ranking individual

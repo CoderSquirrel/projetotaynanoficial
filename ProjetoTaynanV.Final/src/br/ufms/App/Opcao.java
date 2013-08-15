@@ -5,13 +5,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.List;
 
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 import br.ufms.Arquivo.ArquivoTotal;
+import br.ufms.Classes.LinhaRankingGeral;
 
-public class Opcoes extends JPanel {
+public class Opcao extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private Entrada entrada = new Entrada();
@@ -20,9 +24,10 @@ public class Opcoes extends JPanel {
 	private TipoRanking ranking;
 	private App app;
 	private Acoes acoes;
+	private Resutado resultados = new Resutado();
 	private ArquivoTotal arquivo = new ArquivoTotal();
 
-	public Opcoes(App app) {
+	public Opcao(App app) {
 		acoes = new Acoes();
 		this.app = app;
 		setLayout(new GridLayout(0, 1, 0, 0));
@@ -56,6 +61,16 @@ public class Opcoes extends JPanel {
 		return true;
 	}
 
+	public void mostrarPalavras(List<LinhaRankingGeral> palavras) {
+		DefaultTableModel modelo = (DefaultTableModel) resultados.getTabela().getModel();
+		int i = 1;
+		for (LinhaRankingGeral p : palavras) {
+			modelo.addRow(new Object[] { i, p.getPalavra(), p.getQuantidade(),
+					p.getFrequenciaSecundaria() });
+			i++;
+		}
+	}
+
 	class Acoes {
 		ActionListener actionListener = new ActionListener() {
 			@Override
@@ -72,9 +87,6 @@ public class Opcoes extends JPanel {
 					} else {
 						saida.getLbErro().setVisible(false);
 					}
-					if (ranking.getChckbxPrVisualizar().isSelected()) {
-						JOptionPane.showMessageDialog(app, "teste");
-					}
 					if (isOk()) {
 						if (ranking.getRdbtnRankingGeral().isSelected()) {
 							arquivo = new ArquivoTotal();
@@ -82,9 +94,11 @@ public class Opcoes extends JPanel {
 									.getCaminhoEntrada());
 							entrada.habilitaDasabilita();
 							saida.habilitaDasabilita();
-							arquivo.exportarRankingGeral(saida
-									.getCaminhoSaida());
+
 							ranking.habilitaDasabilita();
+							mostrarPalavras(arquivo.exportarRankingGeral(saida
+									.getCaminhoSaida()));
+
 						} else if (ranking.getRdbtnRankingIndividual()
 								.isSelected()) {
 							arquivo = new ArquivoTotal();

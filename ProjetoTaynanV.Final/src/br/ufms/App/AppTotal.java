@@ -183,8 +183,8 @@ public class AppTotal extends JFrame {
                                         if (rdbtnRankingGeral.isSelected()) {
                                                 arquivo = new ArquivoTotal();
                                                 arquivo.abrirArquivosRankingGeral(caminhoEntrada);
-                                                lblStatus.setText(arquivo
-                                                                .exportarRankingGeral(caminhoSaida));
+//                                                lblStatus.setText(arquivo
+//                                                                .exportarRankingGeral(caminhoSaida));
                                                 btnProcurarEntrada.setEnabled(false);
                                                 btnProcurarSaida.setEnabled(false);
                                                 btnGerarRanking.setEnabled(false);

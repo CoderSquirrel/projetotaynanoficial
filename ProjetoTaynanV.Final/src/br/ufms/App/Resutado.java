@@ -8,11 +8,11 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-public class Resutados extends JPanel {
+public class Resutado extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JTable tabela;
-	public Resutados() {
+	public Resutado() {
 		setLayout(new BorderLayout(0, 0));
 
 		JPanel panel = new JPanel();
@@ -24,8 +24,7 @@ public class Resutados extends JPanel {
 
 		tabela = new JTable(new DefaultTableModel(new Object[][] {},
 				new String[] { "Classificação", "Palavra",
-						"Frequência principal", "Frequência Secundária",
-						"Nome Arquivo", "Diretorio", }) {
+						"Frequência principal", "Frequência Secundária" }) {
 			private static final long serialVersionUID = 1L;
 
 			public boolean isCellEditable(int row, int column) {
