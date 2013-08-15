@@ -70,15 +70,23 @@ public class TipoRanking extends JPanel {
 
 	public void habilitaDasabilita() {
 		if (!habilitado) {
-			rdbtnRankingGeral.setEnabled(false);
+//			rdbtnRankingGeral.setEnabled(false);
 			rdbtnRankingIndividual.setEnabled(false);
 			jbGerarRanking.setEnabled(false);
 		} else {
-			rdbtnRankingGeral.setEnabled(true);
+//			rdbtnRankingGeral.setEnabled(true);
 			rdbtnRankingIndividual.setEnabled(true);
 			jbGerarRanking.setEnabled(true);
 		}
 		this.habilitado = !habilitado;
+	}
+	
+	public void conclui(){
+		jbGerarRanking.setText("Novo");
+		jbGerarRanking.setEnabled(true);
+	}
+	public void novo(){
+		
 	}
 
 	public JButton getJbGerarRanking() {

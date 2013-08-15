@@ -137,6 +137,7 @@ public class Opcao extends JPanel {
 							app.setSize(700, 728);
 							app.getResultado().setVisible(true);
 						}
+						ranking.conclui();
 					}
 				}
 
