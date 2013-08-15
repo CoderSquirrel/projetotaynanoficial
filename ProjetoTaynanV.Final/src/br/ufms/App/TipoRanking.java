@@ -15,6 +15,8 @@ import javax.swing.border.TitledBorder;
 
 import br.ufms.App.Opcao.Acoes;
 import br.ufms.utils.RoundedCornerButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TipoRanking extends JPanel {
 
@@ -59,6 +61,7 @@ public class TipoRanking extends JPanel {
 		add(chckbxPrVisualizar);
 		
 		jbGerarRanking = new RoundedCornerButton("Gerar Ranking");
+		jbGerarRanking.addActionListener(acoes.actionListener);
 		jbGerarRanking.setBounds(575, 21, 120, 25);
 		add(jbGerarRanking);
 		
