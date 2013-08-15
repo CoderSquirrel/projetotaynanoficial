@@ -7,7 +7,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
 
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -24,8 +23,8 @@ public class Opcao extends JPanel {
 	private TipoRanking ranking;
 	private App app;
 	private Acoes acoes;
-	private Resutado resultados = new Resutado();
 	private ArquivoTotal arquivo = new ArquivoTotal();
+	private JTable tabela;
 
 	public Opcao(App app) {
 		acoes = new Acoes();
@@ -39,7 +38,7 @@ public class Opcao extends JPanel {
 		add(entradaSaida);
 		ranking = new TipoRanking(acoes);
 		add(ranking);
-
+		
 	}
 
 	/**
@@ -62,7 +61,8 @@ public class Opcao extends JPanel {
 	}
 
 	public void mostrarPalavras(List<LinhaRankingGeral> palavras) {
-		DefaultTableModel modelo = (DefaultTableModel) resultados.getTabela().getModel();
+		tabela = app.getResultado().getTabela();
+		DefaultTableModel modelo = (DefaultTableModel) tabela.getModel();
 		int i = 1;
 		for (LinhaRankingGeral p : palavras) {
 			modelo.addRow(new Object[] { i, p.getPalavra(), p.getQuantidade(),
