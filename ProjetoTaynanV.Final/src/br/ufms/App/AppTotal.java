@@ -157,10 +157,10 @@ public class AppTotal extends JFrame {
                 public void actionPerformed(ActionEvent e) {
 
                         if (e.getSource() == btnProcurarEntrada) {
-                                caminhoEntrada = arquivo.escolherPasta(1);
+//                                caminhoEntrada = arquivo.escolherPasta(1);
                                 jtfCaminhoEntrada.setText(caminhoEntrada);
                         } else if (e.getSource() == btnProcurarSaida) {
-                                caminhoSaida = arquivo.escolherPasta(2);
+//                                caminhoSaida = arquivo.escolherPasta(2);
                                 jtfCaminhoSaida.setText(caminhoSaida);
                         } else if (e.getSource() == btnGerarRanking) {
                                 if (caminhoEntrada.equalsIgnoreCase("")) {

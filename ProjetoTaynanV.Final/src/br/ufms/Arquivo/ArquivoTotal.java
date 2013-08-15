@@ -9,7 +9,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
-import javax.swing.JFileChooser;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -27,37 +26,6 @@ public class ArquivoTotal {
         private List<LinhaRankingGeral> linhasGeral = new ArrayList<LinhaRankingGeral>();
         private int quantidadeDeArquivos = 0;
     	private List<JScrollPane> scrolls = new ArrayList<JScrollPane>();
-
-        // Método usados por ambos os tipos de exportação
-
-        /**
-         * 
-         * @param op
-         *            Entrada um inteiro 1 ou 2. Se op == 1 então o JFileChooser
-         *            será aberto para abrir um arquivo. Se op == 2 será para salvar
-         *            o arquivo
-         * @return caminhoArquivo que é uma String contendo a pasta selecionada
-         */
-        public String escolherPasta(int op) {
-                String caminhoArquivo = "";
-                JFileChooser chooser = new JFileChooser();
-                chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-                chooser.setDialogTitle("Escolher Pasta de Arquivos");
-                if (op == 1) {
-                        chooser.showOpenDialog(null);
-
-                } else if (op == 2) {
-                        chooser.showSaveDialog(null);
-                }
-                File arquivo = chooser.getSelectedFile();
-
-                if ((arquivo == null) || arquivo.getName().equals("")) {
-                        caminhoArquivo = "";
-                } else if (arquivo.exists()) {
-                        caminhoArquivo = arquivo.getAbsolutePath();
-                }
-                return caminhoArquivo;
-        }
 
         /**
          * 
@@ -393,6 +361,12 @@ public class ArquivoTotal {
     		scrollPane.setName(titulo);
     		scrolls.add(scrollPane);
     	}
+    	
+    	public void clean() {
+    		listaPalavras.clear();
+    		linhasGeral.clear();
+    		scrolls.clear();
+		}
 
         // Gets
         public List<Palavra> getListaPalavras() {

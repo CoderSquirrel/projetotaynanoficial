@@ -42,24 +42,6 @@ public class Opcao extends JPanel {
 
 	}
 
-	/**
-	 * verifica se todos os campos foram preenchidos
-	 * 
-	 * @return verdadeiro se todos foram falso senão
-	 */
-	private boolean isOk() {
-		if (entrada.getCaminhoEntrada().equalsIgnoreCase("")) {
-			return false;
-		}
-		if (saida.getCaminhoSaida().equalsIgnoreCase("")) {
-			return false;
-		}
-		if (!ranking.getRdbtnRankingGeral().isSelected()
-				&& !ranking.getRdbtnRankingIndividual().isSelected()) {
-			return false;
-		}
-		return true;
-	}
 
 	public void individual(List<JScrollPane> scrolls) {
 		for (JScrollPane scroll : scrolls) {
@@ -96,7 +78,8 @@ public class Opcao extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 
 				if (e.getSource() == ranking.getJbGerarRanking()) {
-					if (entrada.getCaminhoEntrada().equalsIgnoreCase("")) {
+					if (entrada.getJtfCaminhoEntrada().getText()
+							.equalsIgnoreCase("")) {
 						entrada.getLbErro().setVisible(true);
 					} else {
 						entrada.getLbErro().setVisible(false);
@@ -106,12 +89,16 @@ public class Opcao extends JPanel {
 					} else {
 						saida.getLbErro().setVisible(false);
 					}
-					if (isOk()) {
+					if(entrada.getLbErro().isVisible() || saida.getLbErro().isVisible()){
+						return;
+					}
+					if (!ranking.getJbGerarRanking().getText()
+									.equalsIgnoreCase("Novo")) {
 						gerouRanking = true;
 						if (ranking.getRdbtnRankingGeral().isSelected()) {
 							arquivo = new ArquivoTotal();
 							arquivo.abrirArquivosRankingGeral(entrada
-									.getCaminhoEntrada());
+									.getJtfCaminhoEntrada().getText());
 							entrada.habilitaDasabilita();
 							saida.habilitaDasabilita();
 
@@ -123,21 +110,36 @@ public class Opcao extends JPanel {
 						} else if (ranking.getRdbtnRankingIndividual()
 								.isSelected()) {
 							arquivo = new ArquivoTotal();
-							arquivo.abrirArquivoRankingIndividual(
-									saida.getCaminhoSaida(),
-									entrada.getCaminhoEntrada());
+							arquivo.abrirArquivoRankingIndividual(saida
+									.getCaminhoSaida(), entrada
+									.getJtfCaminhoEntrada().getText());
 							entrada.habilitaDasabilita();
 							saida.habilitaDasabilita();
 							ranking.habilitaDasabilita();
 							individual(arquivo.getScrolls());
 						}
-						if(gerouRanking && ranking.getChckbxPrVisualizar().isSelected()){
+						if (gerouRanking
+								&& ranking.getChckbxPrVisualizar().isSelected()) {
 							ranking.getLbVisualizar().setVisible(false);
 							app.setLocation(app.getWidth() / 3, 0);
 							app.setSize(700, 728);
 							app.getResultado().setVisible(true);
 						}
 						ranking.conclui();
+					} else {
+						gerouRanking = false;
+						entrada.limpaCampo();
+						saida.limpaCampo();
+						ranking.getJbGerarRanking().setText("Gerar Ranking");
+						entrada.habilitaDasabilita();
+						saida.habilitaDasabilita();
+						ranking.habilitaDasabilita();
+						app.setLocation(app.getWidth() / 3, app.getHeight() / 3);
+						app.setSize(700, 300);
+						app.getResultado().setVisible(false);
+						ranking.getChckbxPrVisualizar().setSelected(false);
+						arquivo.clean();
+						app.getResultado().clean();
 					}
 				}
 
@@ -158,12 +160,12 @@ public class Opcao extends JPanel {
 						app.setSize(700, 300);
 						app.getResultado().setVisible(false);
 					}
-				}else{
-					if(ranking.getChckbxPrVisualizar().isSelected())
+				} else {
+					if (ranking.getChckbxPrVisualizar().isSelected())
 						ranking.getLbVisualizar().setVisible(true);
-					else 
+					else
 						ranking.getLbVisualizar().setVisible(false);
-					
+
 				}
 			}
 		};

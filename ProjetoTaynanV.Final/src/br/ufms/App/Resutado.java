@@ -29,5 +29,9 @@ public class Resutado extends JPanel {
 	public JTabbedPane getTabbedPane() {
 		return tabbedPane;
 	}
+	
+	public void clean(){
+		tabbedPane.removeAll();
+	}
 
 }

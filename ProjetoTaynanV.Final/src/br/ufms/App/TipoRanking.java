@@ -70,11 +70,11 @@ public class TipoRanking extends JPanel {
 
 	public void habilitaDasabilita() {
 		if (!habilitado) {
-//			rdbtnRankingGeral.setEnabled(false);
+			rdbtnRankingGeral.setEnabled(false);
 			rdbtnRankingIndividual.setEnabled(false);
 			jbGerarRanking.setEnabled(false);
 		} else {
-//			rdbtnRankingGeral.setEnabled(true);
+			rdbtnRankingGeral.setEnabled(true);
 			rdbtnRankingIndividual.setEnabled(true);
 			jbGerarRanking.setEnabled(true);
 		}

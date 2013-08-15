@@ -103,4 +103,9 @@ public class Saida extends JPanel {
 	public JLabel getLbErro() {
 		return lbErro;
 	}
+	
+	public void limpaCampo(){
+		jtfCaminhoSaida.setText("");
+		caminhoSaida = "";
+	}
 }

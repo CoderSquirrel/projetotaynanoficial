@@ -27,7 +27,6 @@ public class Entrada extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JButton btnProcurarEntrada;
 	private JTextField jtfCaminhoEntrada;
-	private String caminhoEntrada = "";
 	private JLabel lbErro;
 	private boolean habilitado;
 
@@ -40,8 +39,7 @@ public class Entrada extends JPanel {
 		btnProcurarEntrada = new RoundedCornerButton("Procurar");
 		btnProcurarEntrada.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				caminhoEntrada = escolherPasta();
-				jtfCaminhoEntrada.setText(caminhoEntrada);
+				jtfCaminhoEntrada.setText(escolherPasta());
 			}
 		});
 		btnProcurarEntrada.setBounds(575, 21, 120, 25);
@@ -84,14 +82,10 @@ public class Entrada extends JPanel {
 			return "";
 		}
 		if (arquivo.exists()) {
-			caminhoEntrada = arquivo.getAbsolutePath();
+			jtfCaminhoEntrada.setText(arquivo.getAbsolutePath());
 
 		}
-		return caminhoEntrada;
-	}
-
-	public String getCaminhoEntrada() {
-		return caminhoEntrada;
+		return jtfCaminhoEntrada.getText();
 	}
 
 	public JLabel getLbErro() {
@@ -107,6 +101,15 @@ public class Entrada extends JPanel {
 			btnProcurarEntrada.setEnabled(true);
 		}
 		this.habilitado = !habilitado;
+	}
+	
+	
+	public JTextField getJtfCaminhoEntrada() {
+		return jtfCaminhoEntrada;
+	}
+
+	public void limpaCampo() {
+		jtfCaminhoEntrada.setText("");
 	}
 
 }
