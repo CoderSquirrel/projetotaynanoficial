@@ -3,12 +3,9 @@ package br.ufms.App;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
-import java.awt.Image;
-import java.awt.Toolkit;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.geom.RoundRectangle2D;
-import java.net.URL;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
