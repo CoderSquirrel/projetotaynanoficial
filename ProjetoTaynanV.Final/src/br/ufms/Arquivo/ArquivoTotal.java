@@ -280,7 +280,7 @@ public class ArquivoTotal {
                 List<Palavra> palavras = gerarListaPalavrasIndividual(texto);
                 List<LinhaRankingIndividual> linhas = gerarListaDeLinhaIndividual(
                                 palavras, nomeArquivo);
-
+                preencherScrolls(linhas);
                 exportarRankingIndividual(caminho, linhas, nomeArquivo);
 
         }
