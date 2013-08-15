@@ -14,8 +14,10 @@ import br.ufms.utils.RoundJTextField;
 import br.ufms.utils.RoundedCornerButton;
 
 import com.jtechlabs.ui.widget.directorychooser.JDirectoryChooser;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import javax.swing.ImageIcon;
 
 public class Saida extends JPanel {
@@ -58,7 +60,7 @@ public class Saida extends JPanel {
 		add(lblCaminhoEntrada);
 		
 		lbErro = new JLabel("Diret\u00F3rio de Sa\u00EDda Precisa ser Definido.");
-		lbErro.setIcon(new ImageIcon("C:\\Users\\Admin\\git\\ProjetoTaynanOficial\\ProjetoTaynanV.Final\\img\\error.png"));
+		lbErro.setIcon(new ImageIcon(System.getProperty("user.dir")+("\\img\\error.png")));
 		lbErro.setForeground(Color.RED);
 		lbErro.setBounds(10, 47, 555, 14);
 		lbErro.setVisible(false);

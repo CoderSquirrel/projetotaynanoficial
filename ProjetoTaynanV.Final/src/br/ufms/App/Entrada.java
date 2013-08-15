@@ -14,7 +14,9 @@ import br.ufms.utils.RoundJTextField;
 import br.ufms.utils.RoundedCornerButton;
 
 import com.jtechlabs.ui.widget.directorychooser.JDirectoryChooser;
+
 import javax.swing.ImageIcon;
+
 import java.awt.Color;
 
 public class Entrada extends JPanel {
@@ -58,8 +60,7 @@ public class Entrada extends JPanel {
 		lbErro = new JLabel(
 				"Diret\u00F3rio com as Legendas Precisa ser Definido.");
 		lbErro.setForeground(Color.RED);
-		lbErro.setIcon(new ImageIcon(
-				"C:\\Users\\Admin\\git\\ProjetoTaynanOficial\\ProjetoTaynanV.Final\\img\\error.png"));
+		lbErro.setIcon(new ImageIcon(System.getProperty("user.dir")+("\\img\\error.png")));
 		lbErro.setBounds(10, 47, 555, 14);
 		lbErro.setVisible(false);
 		add(lbErro);

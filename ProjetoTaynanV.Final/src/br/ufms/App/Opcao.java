@@ -9,7 +9,6 @@ import java.util.List;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -89,18 +88,6 @@ public class Opcao extends JPanel {
 		app.getResultado().getTabbedPane().addTab("Ranking Geral", scrollPane);
 		
     }
-
-	public void mostrarPalavras(List<LinhaRankingGeral> palavras) {
-		tabela = app.getResultado().getTabela();
-		DefaultTableModel modelo = (DefaultTableModel) tabela.getModel();
-		int i = 1;
-		for (LinhaRankingGeral p : palavras) {
-			modelo.addRow(new Object[] { i, p.getPalavra(), p.getQuantidade(),
-					p.getFrequenciaSecundaria() });
-			i++;
-		}
-	}
-
 	
 	class Acoes {
 		ActionListener actionListener = new ActionListener() {
@@ -127,8 +114,7 @@ public class Opcao extends JPanel {
 							saida.habilitaDasabilita();
 
 							ranking.habilitaDasabilita();
-							mostrarPalavras(arquivo.exportarRankingGeral(saida
-									.getCaminhoSaida()));
+							arquivo.exportarRankingGeral(saida.getCaminhoSaida());
 							geral(arquivo.getLinhasGeral());
 							
 

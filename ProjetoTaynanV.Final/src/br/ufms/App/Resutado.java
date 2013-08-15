@@ -25,24 +25,7 @@ public class Resutado extends JPanel {
 		tabbedPane.setBounds(0, 76, 778, 600);
 		tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
 		panel.add(tabbedPane);
-		
 
-	/*	tabela = new JTable(new DefaultTableModel(new Object[][] {},
-				new String[] { "Classificação", "Palavra",
-						"Frequência principal", "Frequência Secundária" }) {
-			private static final long serialVersionUID = 1L;
-
-			public boolean isCellEditable(int row, int column) {
-				return true;
-			}
-		});
-		tabela.setBounds(0, 76, 778, 486);
-		tabela.getColumnModel().getColumn(0).setPreferredWidth(3);
-		tabela.getColumnModel().getColumn(1).setPreferredWidth(100);
-		tabela.getColumnModel().getColumn(2).setPreferredWidth(20);
-		tabela.getColumnModel().getColumn(3).setPreferredWidth(20);
-		panel.add(new JScrollPane(tabela), BorderLayout.CENTER);
-*/
 	}
 	public JTable getTabela() {
 		return tabela;
