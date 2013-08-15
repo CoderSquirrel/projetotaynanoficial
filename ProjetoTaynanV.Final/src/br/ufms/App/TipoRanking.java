@@ -14,6 +14,7 @@ import javax.swing.border.TitledBorder;
 
 import br.ufms.App.Opcao.Acoes;
 import br.ufms.utils.RoundedCornerButton;
+import javax.swing.JProgressBar;
 
 public class TipoRanking extends JPanel {
 
@@ -27,6 +28,7 @@ public class TipoRanking extends JPanel {
 	private JCheckBox chckbxPrVisualizar;
 	private boolean habilitado;
 	private JLabel lbVisualizar;
+	private JProgressBar progressBar;
 	public TipoRanking(Acoes acoes) {
 		setBounds(100, 100, 740, 105);
 		setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"),
@@ -63,9 +65,16 @@ public class TipoRanking extends JPanel {
 		
 		lbVisualizar = new JLabel("\u00C9 preciso Gerar Ranking Para Visualizar.");
 		lbVisualizar.setIcon(new ImageIcon(getClass().getResource("/img/alert.png")));
-		lbVisualizar.setBounds(10, 72, 457, 14);
+		lbVisualizar.setBounds(6, 80, 457, 14);
 		lbVisualizar.setVisible(false);
 		add(lbVisualizar);
+		
+		progressBar = new JProgressBar();
+		progressBar.setIndeterminate(true);
+		progressBar.setToolTipText("Processando");
+		progressBar.setBounds(575, 80, 120, 14);
+		progressBar.setVisible(false);
+		add(progressBar);
 	}
 
 	public void habilitaDasabilita() {
@@ -108,6 +117,9 @@ public class TipoRanking extends JPanel {
 	public JLabel getLbVisualizar() {
 		return lbVisualizar;
 	}
-	
+
+	public JProgressBar getProgressBar() {
+		return progressBar;
+	}
 	
 }
