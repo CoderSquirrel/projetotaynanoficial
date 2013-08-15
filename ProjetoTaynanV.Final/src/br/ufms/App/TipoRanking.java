@@ -3,8 +3,10 @@ package br.ufms.App;
 import java.awt.Color;
 
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.UIManager;
@@ -24,8 +26,9 @@ public class TipoRanking extends JPanel {
 	private JButton jbGerarRanking;
 	private JCheckBox chckbxPrVisualizar;
 	private boolean habilitado;
+	private JLabel lbVisualizar;
 	public TipoRanking(Acoes acoes) {
-		setBounds(100, 100, 740, 80);
+		setBounds(100, 100, 740, 105);
 		setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"),
 				"Tipo de Ranking", TitledBorder.LEADING, TitledBorder.TOP,
 				null, new Color(0, 0, 0)));
@@ -57,6 +60,12 @@ public class TipoRanking extends JPanel {
 		jbGerarRanking.addActionListener(acoes.actionListener);
 		jbGerarRanking.setBounds(575, 21, 120, 25);
 		add(jbGerarRanking);
+		
+		lbVisualizar = new JLabel("\u00C9 preciso Gerar Ranking Para Visualizar.");
+		lbVisualizar.setIcon(new ImageIcon(System.getProperty("user.dir")+("\\img\\alert.png")));
+		lbVisualizar.setBounds(10, 72, 457, 14);
+		lbVisualizar.setVisible(false);
+		add(lbVisualizar);
 	}
 
 	public void habilitaDasabilita() {
@@ -88,5 +97,9 @@ public class TipoRanking extends JPanel {
 		return chckbxPrVisualizar;
 	}
 
+	public JLabel getLbVisualizar() {
+		return lbVisualizar;
+	}
+	
 	
 }

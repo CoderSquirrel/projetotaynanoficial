@@ -372,9 +372,11 @@ public class ArquivoTotal {
     		modelo.addColumn("Arquivo");
 
     		JTable tabela = new JTable(modelo);
-    		tabela.getColumnModel().getColumn(0).setPreferredWidth(3);
-    		tabela.getColumnModel().getColumn(1).setPreferredWidth(100);
-    		tabela.getColumnModel().getColumn(2).setPreferredWidth(100);
+    		tabela.getColumnModel().getColumn(0).setPreferredWidth(50);
+    		tabela.getColumnModel().getColumn(1).setPreferredWidth(175);
+    		tabela.getColumnModel().getColumn(2).setPreferredWidth(150);
+    		tabela.getColumnModel().getColumn(3).setPreferredWidth(325);
+	    	tabela.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
     		for (LinhaRankingIndividual linha : linhas) {
     			modelo.addRow(new Object[] { linha.getI(), linha.getPalavra(),
     					linha.getQuantidade(), linha.getArqivoDeOrigem() });

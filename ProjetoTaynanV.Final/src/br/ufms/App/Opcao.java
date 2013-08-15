@@ -25,7 +25,7 @@ public class Opcao extends JPanel {
 	private App app;
 	private Acoes acoes;
 	private ArquivoTotal arquivo = new ArquivoTotal();
-	private JTable tabela;
+	private boolean gerouRanking;
 
 	public Opcao(App app) {
 		acoes = new Acoes();
@@ -39,7 +39,7 @@ public class Opcao extends JPanel {
 		add(entradaSaida);
 		ranking = new TipoRanking(acoes);
 		add(ranking);
-		
+
 	}
 
 	/**
@@ -60,35 +60,36 @@ public class Opcao extends JPanel {
 		}
 		return true;
 	}
-	
+
 	public void individual(List<JScrollPane> scrolls) {
-        for (JScrollPane scroll : scrolls) {
-        	 app.getResultado().getTabbedPane().addTab(scroll.getName(), null, scroll, null);
-        }
-    }
+		for (JScrollPane scroll : scrolls) {
+			app.getResultado().getTabbedPane()
+					.addTab(scroll.getName(), null, scroll, null);
+		}
+	}
 
-    public void geral(List<LinhaRankingGeral> linhas) {
+	public void geral(List<LinhaRankingGeral> linhas) {
 
-        DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("Indice");
-        modelo.addColumn("Palavra");
-        modelo.addColumn("Frequência");
-        modelo.addColumn("Arquivo");
+		DefaultTableModel modelo = new DefaultTableModel();
+		modelo.addColumn("Indice");
+		modelo.addColumn("Palavra");
+		modelo.addColumn("Frequência");
+		modelo.addColumn("Arquivo");
 
-        JTable tabela = new JTable(modelo);
-        tabela.getColumnModel().getColumn(0).setPreferredWidth(3);
-        tabela.getColumnModel().getColumn(1).setPreferredWidth(100);
-        tabela.getColumnModel().getColumn(2).setPreferredWidth(100);
-        for (LinhaRankingGeral linha : linhas) {
-            modelo.addRow(new Object[] { linha.getI(), linha.getPalavra(),
-                    linha.getQuantidade(), linha.getFrequenciaSecundaria() });
-        }
-        JScrollPane scrollPane = new JScrollPane(tabela);
+		JTable tabela = new JTable(modelo);
+		tabela.getColumnModel().getColumn(0).setPreferredWidth(3);
+		tabela.getColumnModel().getColumn(1).setPreferredWidth(100);
+		tabela.getColumnModel().getColumn(2).setPreferredWidth(100);
+		for (LinhaRankingGeral linha : linhas) {
+			modelo.addRow(new Object[] { linha.getI(), linha.getPalavra(),
+					linha.getQuantidade(), linha.getFrequenciaSecundaria() });
+		}
+		JScrollPane scrollPane = new JScrollPane(tabela);
 		scrollPane.setSize(700, 380);
 		app.getResultado().getTabbedPane().addTab("Ranking Geral", scrollPane);
-		
-    }
-	
+
+	}
+
 	class Acoes {
 		ActionListener actionListener = new ActionListener() {
 			@Override
@@ -106,6 +107,7 @@ public class Opcao extends JPanel {
 						saida.getLbErro().setVisible(false);
 					}
 					if (isOk()) {
+						gerouRanking = true;
 						if (ranking.getRdbtnRankingGeral().isSelected()) {
 							arquivo = new ArquivoTotal();
 							arquivo.abrirArquivosRankingGeral(entrada
@@ -114,9 +116,9 @@ public class Opcao extends JPanel {
 							saida.habilitaDasabilita();
 
 							ranking.habilitaDasabilita();
-							arquivo.exportarRankingGeral(saida.getCaminhoSaida());
+							arquivo.exportarRankingGeral(saida
+									.getCaminhoSaida());
 							geral(arquivo.getLinhasGeral());
-							
 
 						} else if (ranking.getRdbtnRankingIndividual()
 								.isSelected()) {
@@ -129,7 +131,12 @@ public class Opcao extends JPanel {
 							ranking.habilitaDasabilita();
 							individual(arquivo.getScrolls());
 						}
-
+						if(gerouRanking && ranking.getChckbxPrVisualizar().isSelected()){
+							ranking.getLbVisualizar().setVisible(false);
+							app.setLocation(app.getWidth() / 3, 0);
+							app.setSize(700, 728);
+							app.getResultado().setVisible(true);
+						}
 					}
 				}
 
@@ -139,14 +146,23 @@ public class Opcao extends JPanel {
 		MouseAdapter mouseAdapter = new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (ranking.getChckbxPrVisualizar().isSelected()) {
-					app.setLocation(app.getWidth() / 3, 0);
-					app.setSize(1024, 728);
-					app.getResultado().setVisible(true);
-				} else {
-					app.setLocation(app.getWidth() / 3, app.getHeight() / 3);
-					app.setSize(700, 300);
-					app.getResultado().setVisible(false);
+				if (gerouRanking) {
+					ranking.getLbVisualizar().setVisible(false);
+					if (ranking.getChckbxPrVisualizar().isSelected()) {
+						app.setLocation(app.getWidth() / 3, 0);
+						app.setSize(700, 728);
+						app.getResultado().setVisible(true);
+					} else {
+						app.setLocation(app.getWidth() / 3, app.getHeight() / 3);
+						app.setSize(700, 300);
+						app.getResultado().setVisible(false);
+					}
+				}else{
+					if(ranking.getChckbxPrVisualizar().isSelected())
+						ranking.getLbVisualizar().setVisible(true);
+					else 
+						ranking.getLbVisualizar().setVisible(false);
+					
 				}
 			}
 		};

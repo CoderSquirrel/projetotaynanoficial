@@ -5,12 +5,10 @@ import java.awt.BorderLayout;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
-import javax.swing.JTable;
 
 public class Resutado extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private JTable tabela;
 	private JTabbedPane tabbedPane;
 	public Resutado() {
 		setLayout(new BorderLayout(0, 0));
@@ -26,9 +24,6 @@ public class Resutado extends JPanel {
 		tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
 		panel.add(tabbedPane);
 
-	}
-	public JTable getTabela() {
-		return tabela;
 	}
 	
 	public JTabbedPane getTabbedPane() {
