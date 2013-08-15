@@ -3,10 +3,14 @@ package br.ufms.App;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.geom.RoundRectangle2D;
+import java.net.URL;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -40,6 +44,7 @@ public class App extends JFrame {
 	 */
 	public App() {
 		setResizable(false);
+		setIconImage(new ImageIcon(System.getProperty("user.dir")+("\\img\\icon.png")).getImage());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 300);
 		setBackground(Color.LIGHT_GRAY);
