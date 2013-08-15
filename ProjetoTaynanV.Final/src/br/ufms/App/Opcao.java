@@ -8,6 +8,8 @@ import java.awt.event.MouseEvent;
 import java.util.List;
 
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -59,6 +61,39 @@ public class Opcao extends JPanel {
 		}
 		return true;
 	}
+	
+	public void individual(List<JScrollPane> scrolls) {
+        JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+        tabbedPane.setBounds(0, 76, 800, 420);
+        tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
+        app.getResultado().add(tabbedPane);
+
+        for (JScrollPane scroll : scrolls) {
+            tabbedPane.addTab(scroll.getName(), null, scroll, null);
+        }
+    }
+
+    public void geral(List<LinhaRankingGeral> linhas) {
+        JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+        tabbedPane.setBounds(0, 76, 800, 420);
+        tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
+        app.getResultado().add(tabbedPane);
+
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("Indice");
+        modelo.addColumn("Palavra");
+        modelo.addColumn("Frequência");
+        modelo.addColumn("Arquivo");
+
+        JTable tabela = new JTable(modelo);
+        tabela.getColumnModel().getColumn(0).setPreferredWidth(3);
+        tabela.getColumnModel().getColumn(1).setPreferredWidth(100);
+        tabela.getColumnModel().getColumn(2).setPreferredWidth(100);
+        for (LinhaRankingGeral linha : linhas) {
+            modelo.addRow(new Object[] { linha.getI(), linha.getPalavra(),
+                    linha.getQuantidade(), linha.getFrequenciaSecundaria() });
+        }
+    }
 
 	public void mostrarPalavras(List<LinhaRankingGeral> palavras) {
 		tabela = app.getResultado().getTabela();
@@ -71,6 +106,7 @@ public class Opcao extends JPanel {
 		}
 	}
 
+	
 	class Acoes {
 		ActionListener actionListener = new ActionListener() {
 			@Override
