@@ -63,21 +63,12 @@ public class Opcao extends JPanel {
 	}
 	
 	public void individual(List<JScrollPane> scrolls) {
-        JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-        tabbedPane.setBounds(0, 76, 800, 420);
-        tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
-        app.getResultado().add(tabbedPane);
-
         for (JScrollPane scroll : scrolls) {
-            tabbedPane.addTab(scroll.getName(), null, scroll, null);
+        	 app.getResultado().getTabbedPane().addTab(scroll.getName(), null, scroll, null);
         }
     }
 
     public void geral(List<LinhaRankingGeral> linhas) {
-        JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-        tabbedPane.setBounds(0, 76, 800, 420);
-        tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
-        app.getResultado().add(tabbedPane);
 
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Indice");
@@ -93,6 +84,10 @@ public class Opcao extends JPanel {
             modelo.addRow(new Object[] { linha.getI(), linha.getPalavra(),
                     linha.getQuantidade(), linha.getFrequenciaSecundaria() });
         }
+        JScrollPane scrollPane = new JScrollPane(tabela);
+		scrollPane.setSize(700, 380);
+		app.getResultado().getTabbedPane().addTab("Ranking Geral", scrollPane);
+		
     }
 
 	public void mostrarPalavras(List<LinhaRankingGeral> palavras) {
@@ -134,6 +129,8 @@ public class Opcao extends JPanel {
 							ranking.habilitaDasabilita();
 							mostrarPalavras(arquivo.exportarRankingGeral(saida
 									.getCaminhoSaida()));
+							geral(arquivo.getLinhasGeral());
+							
 
 						} else if (ranking.getRdbtnRankingIndividual()
 								.isSelected()) {
@@ -144,6 +141,7 @@ public class Opcao extends JPanel {
 							entrada.habilitaDasabilita();
 							saida.habilitaDasabilita();
 							ranking.habilitaDasabilita();
+							individual(arquivo.getScrolls());
 						}
 
 					}
