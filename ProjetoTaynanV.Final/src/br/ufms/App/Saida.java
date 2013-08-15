@@ -60,7 +60,7 @@ public class Saida extends JPanel {
 		add(lblCaminhoEntrada);
 		
 		lbErro = new JLabel("Diret\u00F3rio de Sa\u00EDda Precisa ser Definido.");
-		lbErro.setIcon(new ImageIcon(System.getProperty("user.dir")+("\\img\\error.png")));
+		lbErro.setIcon(new ImageIcon(getClass().getResource("/img/error.png")));
 		lbErro.setForeground(Color.RED);
 		lbErro.setBounds(10, 47, 555, 14);
 		lbErro.setVisible(false);

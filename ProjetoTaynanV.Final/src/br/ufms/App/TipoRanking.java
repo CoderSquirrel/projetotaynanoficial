@@ -62,7 +62,7 @@ public class TipoRanking extends JPanel {
 		add(jbGerarRanking);
 		
 		lbVisualizar = new JLabel("\u00C9 preciso Gerar Ranking Para Visualizar.");
-		lbVisualizar.setIcon(new ImageIcon(System.getProperty("user.dir")+("\\img\\alert.png")));
+		lbVisualizar.setIcon(new ImageIcon(getClass().getResource("/img/alert.png")));
 		lbVisualizar.setBounds(10, 72, 457, 14);
 		lbVisualizar.setVisible(false);
 		add(lbVisualizar);

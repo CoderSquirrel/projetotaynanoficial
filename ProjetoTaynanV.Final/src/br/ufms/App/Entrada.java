@@ -58,7 +58,7 @@ public class Entrada extends JPanel {
 		lbErro = new JLabel(
 				"Diret\u00F3rio com as Legendas Precisa ser Definido.");
 		lbErro.setForeground(Color.RED);
-		lbErro.setIcon(new ImageIcon(System.getProperty("user.dir")+("\\img\\error.png")));
+		lbErro.setIcon(new ImageIcon(getClass().getResource("/img/error.png")));
 		lbErro.setBounds(10, 47, 555, 14);
 		lbErro.setVisible(false);
 		add(lbErro);

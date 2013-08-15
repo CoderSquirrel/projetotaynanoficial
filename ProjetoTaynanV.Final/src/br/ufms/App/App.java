@@ -41,12 +41,12 @@ public class App extends JFrame {
 	 */
 	public App() {
 		setResizable(false);
-		setIconImage(new ImageIcon(System.getProperty("user.dir")+("\\img\\icon.png")).getImage());
+		setIconImage(new ImageIcon(getClass().getResource("/img/icon.png")).getImage());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 300);
 		setBackground(Color.LIGHT_GRAY);
-		setLocationRelativeTo(null);
 		setTitle("Count FreqX");
+		setLocationRelativeTo(null);
 		painel = new JPanel();
 		setContentPane(painel);
 		painel.setLayout(new BorderLayout(0, 0));
@@ -58,7 +58,6 @@ public class App extends JFrame {
 		resultado = new Resutado();
 		resultado.setVisible(false);
 		painel.add(resultado, BorderLayout.SOUTH);
-		setTitle("");
 		addComponentListener(new ComponentAdapter() {
 			@Override
 			public void componentResized(ComponentEvent e) {
@@ -73,7 +72,6 @@ public class App extends JFrame {
 	public Resutado getResultado() {
 		return resultado;
 	}
-	
 	
 
 }
