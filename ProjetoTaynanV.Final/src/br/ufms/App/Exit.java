@@ -8,7 +8,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-
+/**
+ * 
+ * @author Jasane Schio & Gilberto Leão
+ * Painel com botao sair e sua fincionalidade
+ */
 public class Exit extends JPanel {
 	private static final long serialVersionUID = 1L;
 

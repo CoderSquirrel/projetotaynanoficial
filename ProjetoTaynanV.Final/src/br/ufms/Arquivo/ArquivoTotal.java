@@ -17,7 +17,11 @@ import br.ufms.Classes.LinhaRankingGeral;
 import br.ufms.Classes.LinhaRankingIndividual;
 import br.ufms.Classes.Palavra;
 import br.ufms.Exportar.ExportarTotal;
-
+/**
+ * 
+ * @author Jasane Schio & Gilberto Leão
+ *
+ */
 public class ArquivoTotal {
 
 	private BufferedReader br;

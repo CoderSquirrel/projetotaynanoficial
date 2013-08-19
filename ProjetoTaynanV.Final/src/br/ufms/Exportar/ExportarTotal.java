@@ -17,7 +17,11 @@ import org.apache.poi.ss.util.CellRangeAddress;
 
 import br.ufms.Classes.LinhaRankingGeral;
 import br.ufms.Classes.LinhaRankingIndividual;
-
+/**
+ * 
+ * @author Jasane Schio & Gilberto Leão
+ *
+ */
 public class ExportarTotal {
 	private static HSSFWorkbook workbook;
 	private static HSSFSheet sheet;
@@ -29,7 +33,7 @@ public class ExportarTotal {
 		estilos = preencherEstilos();
 	}
 
-	// MÃ©todos para exportaÃ§Ã£o de Ranking Geral
+	// Métodos para exportação de Ranking Geral
 
 	/**
 	 * 
@@ -38,8 +42,8 @@ public class ExportarTotal {
 	 * @param nomeArquivoSaida
 	 *            nome do arquivo a ser exportado
 	 * @param linhas
-	 *            informaÃ§Ãµes a serem salvas
-	 * @return status de gravaÃ§Ã£o
+	 *            informações a serem salvas
+	 * @return status de gravação
 	 */
 	public String exportarRankingGeral(String caminho, String nomeArquivoSaida,
 			List<LinhaRankingGeral> linhas) {
@@ -99,23 +103,23 @@ public class ExportarTotal {
 		Row rodape = sheet.createRow(sheet.getLastRowNum() + 1);
 		sheet.addMergedRegion(new CellRangeAddress(numRow, numRow + 1, 0, 3));
 		Cell coluna = rodape.createCell(0);
-		coluna.setCellValue("Arquivo Gerado por Programa Contador de Frequência de Palavras");
+		coluna.setCellValue("Arquivo Gerado por CountFreqX");
 		coluna.setCellStyle(estilos.get(1));
 
 		exportar(caminho, nomeArquivoSaida);
 		return statusGravacao;
 	}
 
-	// MÃ©todo para exportaÃ§Ã£o de Ranking Individual
+	// MÃ©todo para exportação de Ranking Individual
 	/**
 	 * 
 	 * @param caminho
 	 *            lugar a ser exportado o arquivo
 	 * @param nomeArquivoSaida
-	 *            nome do aquivo a er exportado
+	 *            nome do aquivo a ser exportado
 	 * @param linhas
-	 *            informaÃ§Ãµes a serem gravadas
-	 * @return status da exportaÃ§Ã£o
+	 *            informações a serem gravadas
+	 * @return status da exportação
 	 */
 	public String rankingIndividual(String caminho, String nomeArquivoSaida,
 			List<LinhaRankingIndividual> linhas) {
@@ -180,7 +184,7 @@ public class ExportarTotal {
 		sheetIndividual.addMergedRegion(new CellRangeAddress(numRow,
 				numRow + 1, 0, 3));
 		Cell coluna = rodape.createCell(0);
-		coluna.setCellValue("Arquivo Gerado por Programa Contador de Frequência de Palavras");
+		coluna.setCellValue("Arquivo Gerado por CountFreqX");
 		coluna.setCellStyle(estilos.get(1));
 
 		exportar(caminho, nomeArquivoSaida);
@@ -198,12 +202,12 @@ public class ExportarTotal {
 
 	// MÃ©todos para ambos
 	/**
-	 * Metodo que faz a gravaÃ§Ã£o do arquivo
+	 * Metodo que faz a gravação do arquivo
 	 * 
 	 * @param caminho
 	 *            lugar a ser exportado o arquivo
 	 * @param nomeDoArquivo
-	 *            nome ndo arquivo a ser salvo
+	 *            nome do arquivo a ser salvo
 	 */
 	private void exportar(String caminho, String nomeDoArquivo) {
 		try {

@@ -15,13 +15,16 @@ import javax.swing.border.TitledBorder;
 
 import br.ufms.App.Opcao.Acoes;
 import br.ufms.utils.RoundedCornerButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
+/**
+ * 
+ * @author Jasane Schio & Gilberto Leão
+ *
+ */
 public class TipoRanking extends JPanel {
 
 	/**
-	 * DeclaraÃ§Ã£o de variaveis
+	 * Declaração de variaveis
 	 */
 	private static final long serialVersionUID = 1L;
 	private JRadioButton rdbtnRankingIndividual, rdbtnRankingGeral;
@@ -29,7 +32,7 @@ public class TipoRanking extends JPanel {
 	private JButton jbGerarRanking;
 	private JCheckBox chckbxPrVisualizar;
 	private boolean habilitado;
-	private JLabel lbVisualizar;
+	private JLabel lbVisualizar, lbStatusGeracao;
 	private JProgressBar progressBar;
 	public TipoRanking(Acoes acoes) {
 		setBounds(100, 100, 740, 105);
@@ -70,6 +73,11 @@ public class TipoRanking extends JPanel {
 		lbVisualizar.setBounds(6, 80, 457, 14);
 		lbVisualizar.setVisible(false);
 		add(lbVisualizar);
+		
+		lbStatusGeracao = new JLabel();
+		lbStatusGeracao.setBounds(0, 90, 740, 20);
+		lbStatusGeracao.setHorizontalAlignment(JLabel.CENTER);
+		add(lbStatusGeracao);
 		
 		progressBar = new JProgressBar();
 		progressBar.setIndeterminate(true);
@@ -123,5 +131,10 @@ public class TipoRanking extends JPanel {
 	public JProgressBar getProgressBar() {
 		return progressBar;
 	}
+
+	public JLabel getLbStatusGeracao() {
+		return lbStatusGeracao;
+	}
+
 	
 }

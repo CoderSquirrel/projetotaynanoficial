@@ -18,11 +18,15 @@ import com.jtechlabs.ui.widget.directorychooser.JDirectoryChooser;
 import javax.swing.ImageIcon;
 
 import java.awt.Color;
-
+/**
+ * 
+ * @author Jasane Schio & Gilberto Leão
+ *Exibição do painel com a entrada de informações 
+ */
 public class Entrada extends JPanel {
 
 	/**
-	 * DeclaraÃ§Ã£o de variaveis
+	 * Declaração de variaveis
 	 */
 	private static final long serialVersionUID = 1L;
 	private JButton btnProcurarEntrada;
@@ -64,13 +68,8 @@ public class Entrada extends JPanel {
 		add(lbErro);
 	}
 
-	/**
-	 * 
-	 * @param op
-	 *            Entrada um inteiro 1 ou 2. Se op == 1 entÃ£o o JFileChooser
-	 *            serÃ¡ aberto para abrir um arquivo. Se op == 2 serÃ¡ para
-	 *            salvar o arquivo
-	 * @return caminhoArquivo que Ã© uma String contendo a pasta selecionada
+	/** 
+	 * @return Caminho da pasta onde estão as legendas
 	 */
 	public String escolherPasta() {
 		lbErro.setVisible(false);
@@ -88,10 +87,9 @@ public class Entrada extends JPanel {
 		return jtfCaminhoEntrada.getText();
 	}
 
-	public JLabel getLbErro() {
-		return lbErro;
-	}
-
+/**
+ * Habilita e desabilita opção de entrada
+ */
 	public void habilitaDasabilita() {
 		if (!habilitado) {
 			jtfCaminhoEntrada.setEnabled(false);
@@ -103,6 +101,9 @@ public class Entrada extends JPanel {
 		this.habilitado = !habilitado;
 	}
 	
+	public JLabel getLbErro() {
+		return lbErro;
+	}
 	
 	public JTextField getJtfCaminhoEntrada() {
 		return jtfCaminhoEntrada;

@@ -1,5 +1,9 @@
 package br.ufms.Classes;
-
+/**
+ * 
+ * @author Jasane Schio & Gilberto Leão
+ *
+ */
 public class LinhaRankingGeral implements Comparable<LinhaRankingGeral> {
 
 	private int i;

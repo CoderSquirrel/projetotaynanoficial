@@ -13,6 +13,11 @@ import javax.swing.table.DefaultTableModel;
 import br.ufms.Arquivo.ArquivoTotal;
 import br.ufms.Classes.LinhaRankingGeral;
 
+/**
+ * 
+ * @author Jasane Schio & Gilberto Leão
+ *
+ */
 public class Opcao extends JPanel {
 
 	private static final long serialVersionUID = 1L;
@@ -37,7 +42,6 @@ public class Opcao extends JPanel {
 		add(entradaSaida);
 		ranking = new TipoRanking(acoes);
 		add(ranking);
-
 	}
 
 	public void individual(List<JScrollPane> scrolls) {
@@ -134,9 +138,11 @@ public class Opcao extends JPanel {
 									app.getResultado().setVisible(true);
 								}
 								ranking.conclui();
+								ranking.getLbStatusGeracao().setText("Geração de ranking concluida.");
 							} else {
 								ranking.getProgressBar().setVisible(false);
 								gerouRanking = false;
+								ranking.getLbStatusGeracao().setText("");
 								entrada.limpaCampo();
 								saida.limpaCampo();
 								ranking.getJbGerarRanking().setText(

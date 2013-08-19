@@ -19,11 +19,15 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 import javax.swing.ImageIcon;
-
+/**
+ * 
+ * @author Jasane Schio & Gilberto Leão
+ *
+ */
 public class Saida extends JPanel {
 
 	/**
-	 * DeclaraÃ§Ã£o de variaveis
+	 * Declaraçã£o de variaveis
 	 */
 	private static final long serialVersionUID = 1L;
 	private JButton btnProcurarSaida;

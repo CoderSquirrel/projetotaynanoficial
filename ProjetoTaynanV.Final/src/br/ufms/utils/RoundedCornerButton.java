@@ -11,9 +11,6 @@ import java.awt.geom.RoundRectangle2D;
 import javax.swing.JButton;
 
 public class RoundedCornerButton extends JButton {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -7291254639348895086L;
 	private static final float arcwidth = 16.0f;
 	private static final float archeight = 16.0f;

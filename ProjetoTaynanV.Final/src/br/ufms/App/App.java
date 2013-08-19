@@ -11,12 +11,12 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-
+/**
+ * @author Jasane Schio & Gilberto Leão
+ * Classe de aplicação
+ */
 public class App extends JFrame {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel painel;
 	private JPanel acoes;

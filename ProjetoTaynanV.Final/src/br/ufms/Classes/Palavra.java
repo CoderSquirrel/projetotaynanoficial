@@ -1,9 +1,9 @@
 package br.ufms.Classes;
-
 /**
- * @author sane
+ * 
+ * @author Jasane Schio & Gilberto Leão
+ *
  */
-
 public class Palavra implements Comparable<Palavra> {
 	private String palavra;
 	private int quantidade;
