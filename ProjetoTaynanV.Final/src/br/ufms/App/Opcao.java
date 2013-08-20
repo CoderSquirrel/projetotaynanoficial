@@ -138,11 +138,11 @@ public class Opcao extends JPanel {
 									app.getResultado().setVisible(true);
 								}
 								ranking.conclui();
-								ranking.getLbStatusGeracao().setText("Geração de ranking concluida.");
+								ranking.getLbStatusGeracao().setVisible(true);
 							} else {
 								ranking.getProgressBar().setVisible(false);
 								gerouRanking = false;
-								ranking.getLbStatusGeracao().setText("");
+								ranking.getLbStatusGeracao().setVisible(false);
 								entrada.limpaCampo();
 								saida.limpaCampo();
 								ranking.getJbGerarRanking().setText(
@@ -150,8 +150,7 @@ public class Opcao extends JPanel {
 								entrada.habilitaDasabilita();
 								saida.habilitaDasabilita();
 								ranking.habilitaDasabilita();
-								app.setLocation(app.getWidth() / 3,
-										app.getHeight() / 3);
+								app.setLocationRelativeTo(null);
 								app.setSize(700, 300);
 								app.getResultado().setVisible(false);
 								ranking.getChckbxPrVisualizar().setSelected(

@@ -74,8 +74,10 @@ public class TipoRanking extends JPanel {
 		lbVisualizar.setVisible(false);
 		add(lbVisualizar);
 		
-		lbStatusGeracao = new JLabel();
+		lbStatusGeracao = new JLabel("Geração de ranking concluida.");
+		lbStatusGeracao.setIcon(new ImageIcon(getClass().getResource("/img/ok.png")));
 		lbStatusGeracao.setBounds(0, 90, 740, 20);
+		lbStatusGeracao.setVisible(false);
 		lbStatusGeracao.setHorizontalAlignment(JLabel.CENTER);
 		add(lbStatusGeracao);
 		
