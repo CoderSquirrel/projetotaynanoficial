@@ -77,7 +77,7 @@ public class Saida extends JPanel {
 		File arquivo = null;
 		arquivo = JDirectoryChooser.showDialog(this, arquivo,
 				"Selecione o Diretorio",
-				"Selecione o Diretorio que contem as Legendas.");
+				"Selecione o Diretorio a ser Salvo.");
 		if (arquivo == null) {
 			return "";
 		}

@@ -76,7 +76,7 @@ public class Entrada extends JPanel {
 		File arquivo = null;
 		arquivo = JDirectoryChooser.showDialog(this, arquivo,
 				"Selecione o Diretorio",
-				"Selecione o Diretorio que contem as Legendas.");
+				"Selecione o Diretorio de Legendas.");
 		if (arquivo == null) {
 			return "";
 		}
